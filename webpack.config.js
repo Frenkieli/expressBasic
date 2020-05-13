@@ -1,5 +1,5 @@
 /* webpack.config.js ： Webpack 的設定檔 */
-
+// const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -34,4 +34,7 @@ module.exports = {
       { from: 'src/public', to: 'public' },
     ])
   ],
+  optimization: {
+    minimize: true,
+  }
 }

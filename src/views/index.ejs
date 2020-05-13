@@ -4,8 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
 </head>
 <body>
   Hello Word!
+  <button id="clickGo">點擊發出</button>
+  <button id="clickGo2">點擊發出2</button>
+  <script>
+    document.getElementById('clickGo').addEventListener('click', function(e){
+      axios.get('connect/test').then(res=>{
+        console.log(res);
+      })
+    })
+    document.getElementById('clickGo2').addEventListener('click', function(e){
+      axios.get('connect/test2').then(res=>{
+        console.log(res);
+      })
+    })
+
+  </script>
 </body>
 </html>

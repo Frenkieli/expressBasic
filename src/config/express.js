@@ -1,24 +1,46 @@
+/**
+ * @description express相關設定檔
+ * @author frenkie
+ * @date 2020-05-13
+ */
+
 /* express.js */
 import express from 'express';
-import config from './config';
 import path from 'path';
-import index from '../server/routes/index';
-var createError = require('http-errors');
+import logger from 'morgan';
+import cookieParser from 'cookie-parser';
+
+
+
+
+import createError from'http-errors';
+
+import indexRoutes from '../server/routes/index';
+import connrctServerRoutes from '../server/routes/connrctServer';
+
 
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 /* GET home page. */
-app.get('/', (req, res) => {
-  res.render('index', { title: 'temi' , error: ''});
-});
 
-app.use('/api', index);
+// https://cnodejs.org/topic/5ae347ffadea947348e75ec6
+
+/**
+ * 
+ */
+app.use('/', indexRoutes);
+app.use('/connect', connrctServerRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

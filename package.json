@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@babel/core": "^7.9.6",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
@@ -12,6 +13,7 @@
     "babelify": "^8.0.0",
     "browserify": "^16.5.1",
     "compressing": "^1.5.1",
+    "concurrently": "^5.2.0",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.2",
     "express": "^4.17.1",
@@ -36,7 +38,10 @@
     "watch": "gulp",
     "build": "webpack -d -w",
     "build:prod": "webpack -p",
-    "start": "nodemon dist/index.bundle.js"
+    "start:watchClint": "gulp",
+    "start:watchServer": "webpack -d -w",
+    "start:server": "nodemon dist/index.bundle.js",
+    "start": "concurrently npm:start:*"
   },
   "keywords": [],
   "author": "",

@@ -14,7 +14,7 @@ module.exports = {
   externals: [nodeExternals()],
   entry: {
     'index': './src/index.js',
-    'public/javascripts/temibroad': './src/client/typescript/temibroad/temibroad.ts'
+    // 'public/javascripts/temibroad': './src/client/typescript/temibroad/temibroad.ts'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -33,7 +33,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       { from: 'src/client/views', to: 'views' },
-      { from: 'src/client/public', to: 'public' },
+      { from: 'src/client/static', to: 'public' },
     ])
   ],
   optimization: {

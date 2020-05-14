@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   target: 'node',
+  devtool: 'eval-source-map',
   node: {
     __dirname: false,
     __filename: true,
@@ -13,6 +14,7 @@ module.exports = {
   externals: [nodeExternals()],
   entry: {
     'index': './src/index.js',
+    'public/javascripts/temibroad': './src/client/typescript/temibroad/temibroad.ts'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -30,8 +32,8 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/views', to: 'views' },
-      { from: 'src/public', to: 'public' },
+      { from: 'src/client/views', to: 'views' },
+      { from: 'src/client/public', to: 'public' },
     ])
   ],
   optimization: {

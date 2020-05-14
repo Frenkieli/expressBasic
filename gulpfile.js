@@ -31,7 +31,7 @@ task('tScriptToWeb', function () {
       this.emit('end');
     })
     // .pipe(coffee())
-    // .pipe(source('temibroad.bundle.js'))
+    .pipe(source('temibroad.bundle.js'))
     .pipe(buffer())
     // .pipe(uglify({
     //   compress: {
